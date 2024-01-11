@@ -1,8 +1,10 @@
-from django.shortcuts import render
-from django.http import HttpRequest,JsonResponse
+from rest_framework.request import Request
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.decorators import api_view
 
 # Create your views here.
-
-def homePage(request:HttpRequest):
+@api_view(http_method_names=['GET'])
+def homePage(request:Request):
     response={"message": "Hello World!"}
-    return JsonResponse(data=response)
+    return Response(data=response, status=status.HTTP_200_OK)
